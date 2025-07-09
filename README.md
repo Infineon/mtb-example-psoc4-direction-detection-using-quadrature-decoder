@@ -4,11 +4,11 @@ This code example demonstrates the use of the TCPWM peripheral configured as a q
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-psoc4-direction-detection-using-quadrature-decoder)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzY0NjAiLCJTcGVjIE51bWJlciI6IjAwMi0zNjQ2MCIsIkRvYyBUaXRsZSI6IlBTT0MmdHJhZGU7IDQgOiBEaXJlY3Rpb24gZGV0ZWN0aW9uIHVzaW5nIHF1YWRyYXR1cmUgZGVjb2RlciIsInJpZCI6InJhamFubmFnYXV0YSIsIkRvYyB2ZXJzaW9uIjoiMS4zLjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzY0NjAiLCJTcGVjIE51bWJlciI6IjAwMi0zNjQ2MCIsIkRvYyBUaXRsZSI6IlBTT0MmdHJhZGU7IDQgOiBEaXJlY3Rpb24gZGV0ZWN0aW9uIHVzaW5nIHF1YWRyYXR1cmUgZGVjb2RlciIsInJpZCI6InJhamFubmFnYXV0YSIsIkRvYyB2ZXJzaW9uIjoiMS40LjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
 
 ## Requirements
 
-- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.4 or later (tested with v3.4)
+- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.5 or later (tested with v3.5)
 
 - Board support package (BSP) minimum required version: 3.1.0
 - Programming language: C
@@ -17,8 +17,8 @@ This code example demonstrates the use of the TCPWM peripheral configured as a q
 ## Supported toolchains (make variable 'TOOLCHAIN')
 
 - GNU Arm&reg; Embedded Compiler v11.3.1 (`GCC_ARM`) – Default value of `TOOLCHAIN`
-- Arm&reg; Compiler v6.16 (`ARM`)
-- IAR C/C++ Compiler v9.40.2 (`IAR`)
+- Arm&reg; Compiler v6.22 (`ARM`)
+- IAR C/C++ Compiler v9.50.2 (`IAR`)
 
 ## Supported kits (make variable 'TARGET')
 
@@ -26,8 +26,8 @@ This code example demonstrates the use of the TCPWM peripheral configured as a q
 - [PSOC&trade; 4100S Plus Prototyping Kit](https://www.infineon.com/CY8CKIT-149) (`CY8CKIT-149`)
 - [PSOC&trade; 4000S CAPSENSE&trade; Prototyping Kit](https://www.infineon.com/CY8CKIT-145-40XX) (`CY8CKIT-145-40XX`)
 - [PSOC&trade; 4500S Pioneer Kit](https://www.infineon.com/CY8CKIT-045S) (`CY8CKIT-045S`)
-- [PSOC&trade; 4 HVMS-128K Evaluation Kit](https://www.infineon.com/KIT_PSoC4-HVMS-128K_LITE) (`KIT_PSoC4-HVMS-128K_LITE`)
-- [PSOC&trade; 4 HVMS-64K Evaluation Kit](https://www.infineon.com/KIT_PSoC4-HVMS-64K_LITE) (`KIT_PSoC4-HVMS-64K_LITE`)
+- [PSOC&trade; 4 HVMS-128K Evaluation Kit](https://www.infineon.com/cms/en/product/evaluation-boards/kit_psoc4-hvms-128k_lite/) (`KIT_PSoC4-HVMS-128K_LITE`)
+- [PSOC&trade; 4 HVMS-64K Evaluation Kit](https://www.infineon.com/cms/en/product/evaluation-boards/kit_psoc4-hvms-64k_lite/) (`KIT_PSoC4-HVMS-64K_LITE`)
 
 ## Hardware setup
 
@@ -40,8 +40,8 @@ This example uses the board's default configuration. See the kit guide to ensure
 2. For [CY8CKIT-145-40XX](https://www.infineon.com/CY8CKIT-145-40XX), connect a jumper wire from PWM_phiA (P1.2) output to phiA (P4.0) QuadDec input, and connect another jumper wire from PWM_phiB (P2.6) output to phiB (P3.7) QuadDec input.
 3. For [CY8CKIT-149](https://www.infineon.com/CY8CKIT-149), connect a jumper wire from PWM_phiA (P5.6) output to phiA (P0.0) QuadDec input, and connect another jumper wire from PWM_phiB (P3.6) output to phiB (P1.3) QuadDec input.
 4. For [CY8CKIT-045S](https://www.infineon.com/CY8CKIT-045S), connect a jumper wire from PWM_phiA (P5.6) output to phiA (P2.0) QuadDec input, and connect another jumper wire from PWM_phiB (P1.4) output to phiB (P1.3) QuadDec input.
-5. For [KIT_PSoC4-HVMS-64K_LITE](https://www.infineon.com/cms/en/product/evaluation-boards/psoc4_hvms_lite_kit/), connect a jumper wire from PWM_phiA (P5.3) output to phiA (P0.2) QuadDec input, and connect another jumper wire from PWM_phiB (P5.1) output to phiB (P0.0) QuadDec input. Remove a short plug from J6. 
-6. For [KIT_PSoC4-HVMS-128K_LITE](https://www.infineon.com/cms/en/product/evaluation-boards/psoc4_hvms_lite_kit/), connect a jumper wire from PWM_phiA (P5.3) output to phiA (P0.2) QuadDec input, and connect another jumper wire from PWM_phiB (P5.1) output to phiB (P0.0) QuadDec input. Remove a short plug from J6.
+5. For [KIT_PSoC4-HVMS-64K_LITE](https://www.infineon.com/cms/en/product/evaluation-boards/kit_psoc4-hvms-64k_lite/), connect a jumper wire from PWM_phiA (P5.3) output to phiA (P0.2) QuadDec input, and connect another jumper wire from PWM_phiB (P5.1) output to phiB (P0.0) QuadDec input. Remove a short plug from J6. 
+6. For [KIT_PSoC4-HVMS-128K_LITE](https://www.infineon.com/cms/en/product/evaluation-boards/kit_psoc4-hvms-128k_lite/), connect a jumper wire from PWM_phiA (P5.3) output to phiA (P0.2) QuadDec input, and connect another jumper wire from PWM_phiB (P5.1) output to phiB (P0.0) QuadDec input. Remove a short plug from J6.
 
 ## Software setup
 
@@ -189,7 +189,7 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
    </details>
 
 4. On successful programming, LED1 turns on when the direction is clockwise; LED2 turns on when the direction is counter-clockwise. Both LEDs turn off when no rotation is detected. For [CY8CKIT-145-40XX](https://www.infineon.com/CY8CKIT-145-40XX) and [CY8CKIT-149](https://www.infineon.com/CY8CKIT-149) LED5 turns on when the direction is clockwise; LED6 turns on when the direction is counter-clockwise.
-For [KIT_PSoC4-HVMS-64K_LITE](https://www.infineon.com/cms/en/product/evaluation-boards/psoc4_hvms_lite_kit/) and [KIT_PSoC4-HVMS-128K_LITE](https://www.infineon.com/cms/en/product/evaluation-boards/psoc4_hvms_lite_kit/) LED6 turns on when the direction is clockwise; LED7 turns on when the direction is counter-clockwise. Both LEDs turn on when no rotation is detected.
+For [KIT_PSoC4-HVMS-64K_LITE](https://www.infineon.com/cms/en/product/evaluation-boards/kit_psoc4-hvms-64k_lite/) and [KIT_PSoC4-HVMS-128K_LITE](https://www.infineon.com/cms/en/product/evaluation-boards/kit_psoc4-hvms-128k_lite/) LED6 turns on when the direction is clockwise; LED7 turns on when the direction is counter-clockwise. Both LEDs turn on when no rotation is detected.
 
 
 ## Debugging
@@ -238,9 +238,9 @@ To detect the direction of rotation, a quadrature decoder peripheral is used. Th
 
 Resources  | Links
 -----------|----------------------------------
-Application notes  | [AN79953](https://www.infineon.com/AN79953) – Getting started with PSOC&trade; 4
+Application notes  | [AN79953](https://www.infineon.com/AN79953) – Getting started with PSOC&trade; 4<br>[AN0034](https://www.infineon.com/dgdl/?fileId=8ac78c8c93dda25b01954cc962534907) - Getting started with PSOC&trade; 4 HV MS MCUs in ModusToolbox&trade;
 Code examples  | [Using ModusToolbox&trade;](https://github.com/Infineon/Code-Examples-for-ModusToolbox-Software) on GitHub
-Device documentation | [PSOC&trade; 4 datasheets](https://www.infineon.com/cms/en/search.html#!view=downloads&term=psoc4&doc_group=Data%20Sheet) <br>[PSOC&trade; 4 technical reference manuals](https://www.infineon.com/cms/en/search.html#!view=downloads&term=psoc4&doc_group=Additional%20Technical%20Information)
+Device documentation | [PSOC&trade; 4 datasheets](https://www.infineon.com/cms/en/search.html#!view=downloads&term=psoc4&doc_group=Data%20Sheet) <br>[PSOC&trade; 4 technical reference manuals](https://www.infineon.com/cms/en/search.html#!view=downloads&term=psoc4&doc_group=Additional%20Technical%20Information)<br>[PSOC&trade; high voltage (HV) mixed signal (MS) automotive MCU 128K datasheets](https://www.infineon.com/dgdl/?fileId=8ac78c8c956a0a47019581095cec5cf6) <br>[PSOC&trade; high voltage (HV) mixed signal (MS) automotive MCU 64K datasheets](https://www.infineon.com/dgdl/?fileId=8ac78c8c956a0a470195817712a75d7a) <br>[PSOC&trade; high voltage (HV) mixed signal (MS) MCU: PSOC&trade; HVMS-128K registers reference manuals](https://www.infineon.com/dgdl/?fileId=8ac78c8c95650102019567b74fb62a38) <br>[PSOC&trade; high voltage (HV) mixed signal (MS) MCU: PSOC&trade; HVMS-64K registers reference manuals](https://www.infineon.com/dgdl/?fileId=8ac78c8c93dda25b019562232806264b&da=t) <br>[PSOC&trade; high voltage (HV) mixed signal (MS) MCU architecture reference manuals](https://www.infineon.com/dgdl/?fileId=8ac78c8c93dda25b0195297d34bf3ee6&da=t)
 Development kits | Select your kits from the [Evaluation board finder](https://www.infineon.com/cms/en/design-support/finder-selection-tools/product-finder/evaluation-board) page.
 Libraries on GitHub | [mtb-pdl-cat2](https://github.com/Infineon/mtb-pdl-cat2) – PSOC&trade; 4 Peripheral Driver Library (PDL)<br> [mtb-hal-cat2](https://github.com/Infineon/mtb-hal-cat2) – Hardware Abstraction Layer (HAL) library
 Tools  | [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) – ModusToolbox&trade; software is a collection of easy-to-use libraries and tools enabling rapid development with Infineon MCUs for applications ranging from wireless and cloud-connected systems, edge AI/ML, embedded sense and control, to wired USB connectivity using PSOC&trade; Industrial/IoT MCUs, AIROC&trade; Wi-Fi and Bluetooth&reg; connectivity devices, XMC&trade; Industrial MCUs, and EZ-USB&trade;/EZ-PD&trade; wired connectivity controllers. ModusToolbox&trade; incorporates a comprehensive set of BSPs, HAL, libraries, configuration tools, and provides support for industry-standard IDEs to fast-track your embedded application development.
@@ -262,6 +262,7 @@ Document title: *CE236460* - *PSOC&trade; 4: Direction detection using quadratur
  1.1.0   | Added support for CY8CKIT-045S and updated to support ModusToolbox&trade; v3.1.
  1.2.0   | Added support for KIT_PSoC4-HVMS-128K_LITE and KIT_PSoC4-HVMS-64K_LITE and updated to support ModusToolbox&trade; v3.2.
  1.3.0   | Changed PSoC HV MS kit name to PSOC4 and updated to support ModusToolbox&trade; v3.4.
+ 1.4.0   | Added support for KIT_PSOC4-HVMS-128K_LITE-02 and KIT_PSOC4-HVMS-64K_LITE-02 and updated to support ModusToolbox™ v3.5.
 <br>
 
 ---------------------------------------------------------
