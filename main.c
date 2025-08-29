@@ -55,7 +55,7 @@
                                         /* Delay should be more than the period
                                         of input signal to the quadrature
                                         decoder */
-#define ROTATION    1   /* CLOCKWISE - 1, ANTI_CLOCKWISE - 2, NO_ROTATION - 0 */
+#define ROTATION    1  /* CLOCKWISE - 1, ANTI_CLOCKWISE - 2, NO_ROTATION - 0 */
 #define TCPWM_PWM_VAL       (999UL)     /* Counter value*/
 
 /*******************************************************************************
@@ -137,6 +137,23 @@ int main(void)
     /* For clockwise rotation count value increases and for anti-clockwise
      * counter value decreases.
      */
+#if defined (CY_DEVICE_PSOC4HV144K)
+        if(count > count_prev)       /* Condition for clockwise rotation */
+        {
+            Cy_GPIO_Set(CYBSP_LED7_PORT, CYBSP_LED7_NUM);  /* LED  OFF */
+            Cy_SysLib_Delay(DELAY);
+        }
+        else if(count < count_prev)  /* Condition for anti-clockwise rotation */
+        {
+            Cy_GPIO_Clr(CYBSP_LED7_PORT, CYBSP_LED7_NUM);  /* LED  ON  */
+            Cy_SysLib_Delay(DELAY);
+        }
+        else                        /* No rotation */
+        {
+            Cy_GPIO_Inv(CYBSP_LED7_PORT, CYBSP_LED7_NUM);  /* LED  OFF */
+            Cy_SysLib_Delay(DELAY);
+        }
+#else
         if(count > count_prev)       /* Condition for clockwise rotation */
         {
             Cy_GPIO_Clr(LED1_PORT, LED1_NUM);   /* LED 1 ON  */
@@ -154,6 +171,7 @@ int main(void)
             Cy_GPIO_Set(LED1_PORT, LED1_NUM);   /* LED 1 OFF */
             Cy_GPIO_Set(LED2_PORT, LED2_NUM);  /* LED 2 OFF */
         }
+#endif
         /* Update count_prev value */
         count_prev = count;
     }
